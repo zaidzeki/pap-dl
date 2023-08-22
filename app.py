@@ -52,15 +52,8 @@ def download():
     url = request.form.get('url')
     itag = int(request.form.get('itag'))
     video = YouTube(url)
-    video_url = video.streams.get_by_itag(itag).url
-    encoded_url = '/proxy/'+str(base64.urlsafe_b64encode(bytes(video_url, 'utf-8')), 'utf-8')
-    return success(encoded_url)
+    stream = video.streams.get_by_itag(itag)
+    stream.save('static/file.mp4')
+    return success('/static/file.mp4')
 
 
-@app.route('/proxy/<encoded>')
-def proxy(encoded):
-    decoded = base64.urlsafe_b64decode(bytes(encoded, 'utf-8'))
-    decoded = str(decoded, 'utf-8')
-    resp = requests.get(decoded, stream=True, allow_redirects=True)
-    print(decoded)
-    return Response(resp.iter_content(512*1024))
