@@ -49,7 +49,7 @@ def details():
 
 @app.route('/download', methods=['POST'])
 def download():
-    url = int(request.form.get('url'))
+    url = request.form.get('url')
     itag = int(request.form.get('itag'))
     video = YouTube(url)
     video_url = video.get_by_itag(itag).url
