@@ -61,5 +61,6 @@ def download():
 def proxy(encoded):
     decoded = base64.urlsafe_b64decode(bytes(encoded, 'utf-8'))
     decoded = str(decoded, 'utf-8')
-    resp = requests.get(decoded)
+    resp = requests.get(decoded, stream=True, allow_redirects=True)
+    print(decoded)
     return Response(resp.iter_content(512*1024))
