@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
 import base64
-import requests
+import os
 
+import requests
 from flask import Flask, render_template, request, jsonify, Response
 from pytube import YouTube
 from humanfriendly import module as humanfriendly
@@ -53,6 +54,7 @@ def download():
     itag = int(request.form.get('itag'))
     video = YouTube(url)
     stream = video.streams.get_by_itag(itag)
+    os.system('find .')
     stream.download('static/file.mp4')
     return success('/static/file.mp4')
 
