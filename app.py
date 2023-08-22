@@ -55,7 +55,8 @@ def download():
     video = YouTube(url)
     stream = video.streams.get_by_itag(itag)
     os.system('find .')
-    stream.download('static/file.mp4')
+    print(os.getcwd())
+    stream.download('./static/file.mp4')
     return success('/static/file.mp4')
 
 
