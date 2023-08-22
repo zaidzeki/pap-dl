@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0"
+        name="viewport" />
+    <title>P@P Downloader</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/w3.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/all.min.css') }}">
+
+
+</head>
+
+<body>
+    <header class="w3-container w3-padding w3-blue">
+        <h4>P@P Downloader</h4>
+    </header>
+    <main class="w3-container">
+        <div class="w3-card w3-border w3-container w3-section w3-padding" style="max-width: 800px; margin: auto">
+            <input type="url" class="w3-input" id="url" placeholder="https://www.youtube.com/watch?v=..." />
+            <div class="w3-section">
+                <button class="w3-btn w3-blue w3-right" onclick="details()">Details</button>
+            </div>
+            <br />
+            <hr style="clear: both;" />
+            <ul class="w3-ul" id="links"></ul>
+        </div>
+    </main>
+    <script src="{{ url_for('static', filename='js/jquery-3.6.3.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+
+</html>
