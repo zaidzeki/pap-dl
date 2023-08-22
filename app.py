@@ -63,6 +63,3 @@ def proxy(encoded):
     decoded = str(decoded, 'utf-8')
     resp = requests.get(decoded)
     return Response(resp.iter_content(512*1024))
-
-
-app.run()
