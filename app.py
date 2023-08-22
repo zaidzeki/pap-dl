@@ -53,7 +53,7 @@ def download():
     itag = int(request.form.get('itag'))
     video = YouTube(url)
     stream = video.streams.get_by_itag(itag)
-    stream.save('static/file.mp4')
+    stream.download('static/file.mp4')
     return success('/static/file.mp4')
 
 
