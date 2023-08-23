@@ -33,7 +33,7 @@ def details():
     url = request.form.get('url')
     try:
         video = YouTube(url)
-        streams = video.streams.filter(adaptive=False).all()
+        streams = video.streams.filter(progressive=True).all()
         streams += video.streams.filter(only_audio=True).all()
         streams = [{
             'video': stream.includes_video_track,
